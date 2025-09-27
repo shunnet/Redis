@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Snet.Redis.Samples/Snet.Redis.Samples.csproj" />
+  <Project Path="Snet.Redis/Snet.Redis.csproj" />
+</Solution>

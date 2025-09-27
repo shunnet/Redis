@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>25.271.1</Version>
+    <Authors>Shun</Authors>
+    <Product>Extend</Product>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Description>扩展工具：Redis（非关系型内存数据库，用于数据快速出站入站存储）</Description>
+    <PackageProjectUrl>https://shunnet.top</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <AuthorsName>Shun</AuthorsName>
+    <CompanyName>Snet</CompanyName>
+    <AccelerateBuildsInVisualStudio>True</AccelerateBuildsInVisualStudio>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Snet.Core" Version="25.271.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.9.17" />
+  </ItemGroup>
+</Project>
