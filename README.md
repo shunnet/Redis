@@ -1,5 +1,8 @@
 # <img src="https://api.shunnet.top/pic/nuget.png" height="28"> Redis  
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
+[![Repo](https://img.shields.io/badge/Repository-shunnet/Rpc-blue)](https://github.com/shunnet/Redis)  
+
 > 🚀 **高性能 · 内存数据库 · 缓存 & 消息队列**  
 
 
@@ -34,6 +37,15 @@ git clone https://github.com/shunnet/Redis.git
 
 //打开运行 Snet.Redis.Samples 即可
 ```
+
+### 主要类 / 对象（示例）
+
+- `RedisOperate`（入口类）
+  - 用法：`RedisOperate redisOperate = RedisOperate.Instance(new RedisData.Basics { ... });`
+  - 责任：管理与 Redis 的连接、提供常用的键/值操作、批量命令入口、序列化/反序列化封装等。
+- `RedisData.Basics`（配置结构）
+  - 常见字段（示例）：`ConnectStr`（"127.0.0.1:6379"）, `DataBaseID`, `Expiry`（过期时间毫秒）, `TAG`（键前缀）
+- 日志：示例中使用 `Snet.Log.LogHelper` 来记录运行信息（项目自带或依赖的日志封装）
 
 ### 💡 使用示例
 
