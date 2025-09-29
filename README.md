@@ -30,12 +30,12 @@
 
 ## 🚀 快速开始
 
-### 🔧 安装 / 构建
+### 📦 安装方式  
+
+通过 NuGet 获取：  
 
 ```bash
-git clone https://github.com/shunnet/Redis.git
-
-//打开运行 Snet.Redis.Samples 即可
+dotnet add package Snet.Redis
 ```
 
 ### 主要类 / 对象（示例）
