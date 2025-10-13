@@ -10,7 +10,7 @@ namespace Snet.Redis
     /// <summary>
     /// redis操作
     /// </summary>
-    public class RedisOperate : CoreUnify<RedisOperate, Basics>, IOn, IOff, IGetStatus, IGetObject, IDisposable
+    public class RedisOperate : CoreUnify<RedisOperate, Basics>, IOn, IOff, IGetStatus, IGetObject, IDisposable, IAsyncDisposable
     {
         /// <summary>
         /// 有参构造函数
@@ -33,7 +33,7 @@ namespace Snet.Redis
             base.Dispose();
         }
         /// <inheritdoc/>
-        public override async Task DisposeAsync()
+        public override async ValueTask DisposeAsync()
         {
             await OffAsync(true);
             await base.DisposeAsync();
