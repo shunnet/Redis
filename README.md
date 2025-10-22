@@ -1,7 +1,7 @@
 # <img src="https://api.shunnet.top/pic/nuget.png" height="28"> Redis  
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
-[![Repo](https://img.shields.io/badge/Repository-shunnet/Rpc-blue)](https://github.com/shunnet/Redis)  
+[![Repo](https://img.shields.io/badge/Repository-shunnet/Redis-blue)](https://github.com/shunnet/Redis)  
 
 > 🚀 **高性能 · 内存数据库 · 缓存 & 消息队列**  
 
