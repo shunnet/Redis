@@ -44,9 +44,9 @@ namespace Snet.Redis
             BegOperate();
             try
             {
-                if (conn != null && conn.IsConnected)
+                if (GetStatus().GetDetails(out string? message))
                 {
-                    return EndOperate(false, "已打开");
+                    return EndOperate(false, message);
                 }
                 //连接
                 conn = ConnectionMultiplexer.Connect(basics.ConnectStr);
@@ -70,9 +70,9 @@ namespace Snet.Redis
             {
                 if (!HardClose)
                 {
-                    if (conn == null || !conn.IsConnected)
+                    if (!GetStatus().GetDetails(out string? message))
                     {
-                        return EndOperate(false, "未打开");
+                        return EndOperate(false, message);
                     }
                 }
                 conn?.Close();
@@ -107,11 +107,11 @@ namespace Snet.Redis
         public OperateResult GetBaseObject()
         {
             BegOperate();
-            if (conn != null && conn.IsConnected)
+            if (!GetStatus().GetDetails(out string? message))
             {
-                return EndOperate(true, resultData: conn);
+                return EndOperate(false, message);
             }
-            return EndOperate(false, "未连接");
+            return EndOperate(true, resultData: conn);
         }
         /// <inheritdoc/>
         public async Task<OperateResult> OnAsync(CancellationToken token = default) => await Task.Run(() => On(), token);
