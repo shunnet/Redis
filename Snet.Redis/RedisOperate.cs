@@ -295,7 +295,7 @@ namespace Snet.Redis
         {
             if (GetStatus().Status)
             {
-                return JsonSerializer.Deserialize<T>(db.StringGet(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key));
+                return JsonSerializer.Deserialize<T>(db.StringGet(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key).ToString());
             }
             else
             {
@@ -380,7 +380,7 @@ namespace Snet.Redis
         {
             if (GetStatus().Status)
             {
-                return JsonSerializer.Deserialize<T>(await db.StringGetAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key));
+                return JsonSerializer.Deserialize<T>((await db.StringGetAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key)).ToString());
             }
             else
             {
@@ -525,7 +525,7 @@ namespace Snet.Redis
         {
             if (GetStatus().Status)
             {
-                return JsonSerializer.Deserialize<T>(db.ListLeftPop(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key));
+                return JsonSerializer.Deserialize<T>(db.ListLeftPop(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key).ToString());
             }
             else
             {
@@ -542,7 +542,7 @@ namespace Snet.Redis
         {
             if (GetStatus().Status)
             {
-                return JsonSerializer.Deserialize<T>(db.ListRightPop(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key));
+                return JsonSerializer.Deserialize<T>(db.ListRightPop(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key).ToString());
             }
             else
             {
@@ -719,7 +719,7 @@ namespace Snet.Redis
         {
             if (GetStatus().Status)
             {
-                return JsonSerializer.Deserialize<T>(await db.ListLeftPopAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key));
+                return JsonSerializer.Deserialize<T>((await db.ListLeftPopAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key)).ToString());
             }
             else
             {
@@ -736,7 +736,7 @@ namespace Snet.Redis
         {
             if (GetStatus().Status)
             {
-                return JsonSerializer.Deserialize<T>(await db.ListRightPopAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key));
+                return JsonSerializer.Deserialize<T>((await db.ListRightPopAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key)).ToString());
             }
             else
             {
@@ -969,7 +969,7 @@ namespace Snet.Redis
         {
             if (GetStatus().Status)
             {
-                return JsonSerializer.Deserialize<T>(db.HashGet(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key, hashField));
+                return JsonSerializer.Deserialize<T>(db.HashGet(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key, hashField).ToString());
             }
             else
             {
@@ -1169,7 +1169,7 @@ namespace Snet.Redis
         {
             if (GetStatus().Status)
             {
-                return JsonSerializer.Deserialize<T>(await db.HashGetAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key, hashField));
+                return JsonSerializer.Deserialize<T>((await db.HashGetAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key, hashField)).ToString());
             }
             else
             {
