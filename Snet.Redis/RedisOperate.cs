@@ -4,6 +4,7 @@ using Snet.Model.@interface;
 using Snet.Utility;
 using StackExchange.Redis;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using static Snet.Redis.RedisData;
 namespace Snet.Redis
 {
@@ -1404,6 +1405,7 @@ namespace Snet.Redis
         /// <summary>
         /// Redis 排序类型
         /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public enum OrderType
         {
             Asc,
