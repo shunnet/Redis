@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Snet.Redis" Version="26.55.1" />
+    <PackageReference Include="Snet.Redis" Version="26.57.1" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@
     <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>26.55.1</Version>
+    <Version>26.57.1</Version>
     <Authors>Shun</Authors>
     <Product>Extend</Product>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -23,6 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Snet.Core" Version="26.43.1" />
-    <PackageReference Include="StackExchange.Redis" Version="2.11.3" />
+    <PackageReference Include="StackExchange.Redis" Version="2.11.8" />
   </ItemGroup>
 </Project>
