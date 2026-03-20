@@ -3,7 +3,7 @@
     <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>26.78.1</Version>
+    <Version>26.79.1</Version>
     <Authors>Shun</Authors>
     <Product>Extend</Product>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
