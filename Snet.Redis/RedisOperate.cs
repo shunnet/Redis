@@ -9,7 +9,14 @@ using static Snet.Redis.RedisData;
 namespace Snet.Redis
 {
     /// <summary>
-    /// redis操作
+    /// Redis 操作类<br/>
+    /// <br/>
+    /// 功能：<br/>
+    /// - 基于 StackExchange.Redis 实现 Redis 数据库操作<br/>
+    /// - 支持 String、List、Hash、SortedSet、Key 五大数据类型<br/>
+    /// - 支持发布/订阅消息模式<br/>
+    /// - 支持同步/异步双模式操作<br/>
+    /// - 支持 TAG 前缀自动拼接、模糊查询批量删除
     /// </summary>
     public class RedisOperate : CoreUnify<RedisOperate, Basics>, IOn, IOff, IGetStatus, IGetObject, IDisposable, IAsyncDisposable
     {
@@ -693,17 +700,18 @@ namespace Snet.Redis
         }
 
         /// <summary>
-        /// 返回在该列表上键所对应的元素
+        /// 返回在该列表上键所对应的元素（异步方式）
         /// </summary>
         /// <param name="key">键</param>
-        /// <param name="start"></param>
-        /// <param name="stop"></param>
-        /// <returns></returns>
+        /// <param name="start">起始索引</param>
+        /// <param name="stop">结束索引（-1 表示最后一个）</param>
+        /// <returns>元素集合</returns>
         public async Task<IEnumerable<string?>?> ListRangeAsync(string key, long start = 0L, long stop = -1L)
         {
             if (GetStatus().Status)
             {
-                return db.ListRangeAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key, start, stop).ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.ToString());
+                var result = await db.ListRangeAsync(!string.IsNullOrWhiteSpace(basics.TAG) ? GTAG(key) : key, start, stop);
+                return result.Select(x => x.ToString());
             }
             else
             {

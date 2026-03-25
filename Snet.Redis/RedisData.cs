@@ -3,7 +3,7 @@
 namespace Snet.Redis
 {
     /// <summary>
-    /// 数据
+    /// Redis 数据配置类，封装 Redis 连接参数（连接字符串、数据库 ID、Key 前缀、过期时间等）。
     /// </summary>
     public class RedisData
     {
