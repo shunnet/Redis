@@ -1,9 +1,30 @@
-# <img src="https://api.shunnet.top/pic/nuget.png" height="28"> Redis  
+<h1 align="center">Redis</h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
-[![Repo](https://img.shields.io/badge/Repository-shunnet/Redis-blue)](https://github.com/shunnet/Redis)  
+<p align="center">
+  <img width="120" height="120" src="https://api.shunnet.top/pic/nuget.png" alt="Snet Logo"/>
+</p>
 
-> 🚀 **高性能 · 内存数据库 · 缓存 & 消息队列**  
+<p align="center">
+  <b>C# Redis连接库</b>
+</p>
+
+<p align="center">
+
+  <img src="https://img.shields.io/badge/.NET-8.0-blue"/>
+  <img src="https://img.shields.io/badge/.NET-10.0-blue"/>
+  <img src="https://img.shields.io/badge/license-MIT-green"/>
+  <img src="https://img.shields.io/github/stars/shunnet/Redis?style=social"/>
+
+</p>
+
+<p align="center">
+  高性能 · 内存数据库 · 缓存 & 消息队列
+</p>
+
+<p align="center">
+  <a href="https://shunnet.top"><b>🌐 官方网站</b></a> ·
+  <a href="https://github.com/shunnet/Redis"><b>📦 GitHub</b></a>
+</p>
 
 
 ## 📖 简介
