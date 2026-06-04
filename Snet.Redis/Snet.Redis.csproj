@@ -23,6 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Snet.Core" Version="26.133.1" />
-    <PackageReference Include="StackExchange.Redis" Version="2.13.10" />
+    <PackageReference Include="StackExchange.Redis" Version="2.13.17" />
   </ItemGroup>
 </Project>
