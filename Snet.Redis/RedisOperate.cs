@@ -47,88 +47,95 @@ namespace Snet.Redis
             await base.DisposeAsync();
         }
         /// <inheritdoc/>
-        public OperateResult On()
+        public OperateResult On() => OnAsync().GetAwaiter().GetResult();
+
+        /// <inheritdoc/>
+        public OperateResult Off(bool hardClose = false) => OffAsync(hardClose).GetAwaiter().GetResult();
+
+        /// <inheritdoc/>
+        public OperateResult GetStatus() => GetStatusAsync().GetAwaiter().GetResult();
+
+        /// <inheritdoc/>
+        public OperateResult GetBaseObject() => GetBaseObjectAsync().GetAwaiter().GetResult();
+
+        /// <inheritdoc/>
+        public async Task<OperateResult> OnAsync(CancellationToken token = default)
         {
-            BegOperate();
+            await BegOperateAsync(token);
             try
             {
-                if (GetStatus().GetDetails(out string? message))
+                if ((await GetStatusAsync(token)).GetDetails(out string? message))
                 {
-                    return EndOperate(false, message);
+                    return await EndOperateAsync(false, message, token: token);
                 }
                 //连接
-                conn = ConnectionMultiplexer.Connect(basics.ConnectStr);
+                conn = await ConnectionMultiplexer.ConnectAsync(basics.ConnectStr);
                 //选择数据库
                 db = conn.GetDatabase(basics.DataBaseID);
                 //添加注册事件
                 AddRegisterEvent();
-                return EndOperate(true);
+                return await EndOperateAsync(true, token: token);
             }
             catch (Exception ex)
             {
-                Off(true);
-                return EndOperate(false, ex.Message, exception: ex);
+                await OffAsync(true, token);
+                return await EndOperateAsync(false, ex.Message, exception: ex, token: token);
             }
         }
         /// <inheritdoc/>
-        public OperateResult Off(bool HardClose = false)
+        public async Task<OperateResult> OffAsync(bool hardClose = false, CancellationToken token = default)
         {
-            BegOperate();
+            await BegOperateAsync(token);
             try
             {
-                if (!HardClose)
+                if (!hardClose)
                 {
-                    if (!GetStatus().GetDetails(out string? message))
+                    if (!(await GetStatusAsync(token)).GetDetails(out string? message))
                     {
-                        return EndOperate(false, message);
+                        return await EndOperateAsync(false, message, token: token);
                     }
                 }
-                conn?.Close();
-                conn?.Dispose();
+                if (conn != null)
+                {
+                    await conn.CloseAsync();
+                    await conn.DisposeAsync();
+                }
                 conn = null;
                 db = null;
-                return EndOperate(true);
+                return await EndOperateAsync(true, token: token);
             }
             catch (Exception ex)
             {
-                return EndOperate(false, ex.Message, exception: ex);
+                return await EndOperateAsync(false, ex.Message, exception: ex, token: token);
             }
         }
         /// <inheritdoc/>
-        public OperateResult GetStatus()
+        public async Task<OperateResult> GetStatusAsync(CancellationToken token = default)
         {
-            BegOperate();
+            await BegOperateAsync(token);
             try
             {
                 if (conn == null || !conn.IsConnected)
                 {
-                    return EndOperate(false, "未连接", logOutput: false);
+                    return await EndOperateAsync(false, "未连接", logOutput: false, token: token);
                 }
-                return EndOperate(true, "已连接", logOutput: false);
+                return await EndOperateAsync(true, "已连接", logOutput: false, token: token);
             }
             catch (Exception ex)
             {
-                return EndOperate(false, ex.Message, exception: ex);
+                return await EndOperateAsync(false, ex.Message, exception: ex, token: token);
             }
         }
         /// <inheritdoc/>
-        public OperateResult GetBaseObject()
+        public async Task<OperateResult> GetBaseObjectAsync(CancellationToken token = default)
         {
-            BegOperate();
-            if (!GetStatus().GetDetails(out string? message))
+            await BegOperateAsync(token);
+            if (!(await GetStatusAsync(token)).GetDetails(out string? message))
             {
-                return EndOperate(false, message);
+                return await EndOperateAsync(false, message, token: token);
             }
-            return EndOperate(true, resultData: conn);
+            return await EndOperateAsync(true, resultData: conn, token: token);
         }
-        /// <inheritdoc/>
-        public async Task<OperateResult> OnAsync(CancellationToken token = default) => await Task.Run(() => On(), token);
-        /// <inheritdoc/>
-        public async Task<OperateResult> OffAsync(bool hardClose = false, CancellationToken token = default) => await Task.Run(() => Off(hardClose), token);
-        /// <inheritdoc/>
-        public async Task<OperateResult> GetStatusAsync(CancellationToken token = default) => await Task.Run(() => GetStatus(), token);
-        /// <inheritdoc/>
-        public async Task<OperateResult> GetBaseObjectAsync(CancellationToken token = default) => await Task.Run(() => GetBaseObject(), token);
 
         #region 注册事件
 
