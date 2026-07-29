@@ -18,7 +18,7 @@ namespace Snet.Redis
     /// - 支持同步/异步双模式操作<br/>
     /// - 支持 TAG 前缀自动拼接、模糊查询批量删除
     /// </summary>
-    public class RedisOperate : CoreUnify<RedisOperate, Basics>, IOn, IOff, IGetStatus, IGetObject, IDisposable, IAsyncDisposable
+    public class RedisOperate : CoreUnify<RedisOperate, Basics>, IOn, IOff, IStatus, IObject, IDisposable, IAsyncDisposable
     {
         /// <summary>
         /// 有参构造函数
