@@ -23,6 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shunnet\Snet\Snet.Core\Snet.Core.csproj" />
-    <PackageReference Include="StackExchange.Redis" Version="3.4.0" />
+    <PackageReference Include="StackExchange.Redis" Version="3.4.5" />
   </ItemGroup>
 </Project>
